@@ -1,15 +1,10 @@
 
-<?php 
-$url = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD";
-$price = json_decode(file_get_contents($url), true);
-$last_price = $price['last'];
-echo "$last_price";
-?>
 
 <html>
 <head>
 <title>Bitcoin Price Converter</title>
 <meta content='10' http-equiv='refresh'/> <!-- Reloads Page every 10 seconds -->
+  <?php include 'data.php';?>
 </head>
 
 <body>

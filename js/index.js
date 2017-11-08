@@ -28,7 +28,7 @@ var BitcoinPrice = function (_React$Component) {
     $.getJSON("https://api.coinbase.com/v2/prices/spot?currency=USD", function (data) {
       //console.log(data.data.amount);   
       _this2.setState({
-        price: (100000 / data.data.amount).toFixed(2),
+        price: (1000000 / data.data.amount).toFixed(2),
         loading: false
       });
     });

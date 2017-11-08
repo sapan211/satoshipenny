@@ -1,0 +1,82 @@
+
+class BitcoinPrice extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      price: "0",
+      loading: true,
+    
+    }
+  }
+  componentWillMount() {
+    $.getJSON("https://api.coinbase.com/v2/prices/spot?currency=USD", data => {
+      //console.log(data.data.amount);    
+      this.setState({
+        price: (100000000/data.data.amount).toFixed(0),
+        loading: false
+      });
+      });
+  }
+  render() {
+    const { loading, price} = this.state;
+    return loading === true 
+      ? <div>one moment please...</div> 
+      : <div>
+      <div className="price">
+       <span>$0.01</span> 
+       <i className="glyphicon glyphicon-transfer icon" />
+        <span>{price} Satoshi</span>
+         <i className="glyphicon glyphicon-xbt icon" />
+      </div>
+        </div>
+    
+  }
+};
+
+class PriceChart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      loading: true
+    }
+  }
+  componentWillMount() {
+    fetch("https://api.coinbase.com/v2/prices/historic?days=30")
+      .then(response => response.json())
+      .then(data => this.setState({ data: data.data.prices, loading: false}));
+  }
+  getTitle(e) {
+    return `Price: ${e.price}
+Date: ${e.time.substring(0,9)}`
+  }
+  getMax(data) {
+    return data.reduce((max, val) => Math.max(max, parseFloat(val.price)) , 0)
+  }
+  getMin(data) {
+    return data.reduce((min, val) => Math.min(min, parseFloat(val.price)) , 0)
+  }
+  render() {
+    const { loading, data } = this.state;
+    const max = this.getMax(data);
+    const min = this.getMin(data);
+    const offset = min + 200;
+    return (loading === true 
+      ? <div>loading</div> 
+      : <div
+          className="chart"
+          >
+            {data.reverse().map((e, idx) => (
+              <div
+                className="bar"
+                title={this.getTitle(e)}
+                style={{height: `${(parseFloat(e.price)/max)*100}%`}} />)
+        )}
+      </div>)
+  }
+};
+
+ReactDOM.render(<div className="main">
+    <BitcoinPrice />
+    <PriceChart />
+    </div>, document.getElementById("app"));

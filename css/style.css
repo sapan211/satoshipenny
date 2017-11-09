@@ -1,8 +1,14 @@
 body {
-  font-family: verdana;
+   font-family: verdana;
   font-size: 5vw;
   background: #B3E5FC;
   color: #424242; 
+  margin: 0;
+  position: relative;
+  top: 25%;
+  left: 25%;
+  margin-right: -25%;
+  transform: translate (-50%, -50%);
 }
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }

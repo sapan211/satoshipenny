@@ -6,7 +6,7 @@ body {
   margin: 0;
   position: relative;
   top: 25%;
-  left: 25%;
+  left: 15%;
   margin-right: -25%;
   transform: translate (-50%, -50%);
 }

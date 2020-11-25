@@ -62,3 +62,5 @@ body {
   border-top: 5px solid black !important
 }
 
+.responsive {width: auto
+ ;height: auto;}

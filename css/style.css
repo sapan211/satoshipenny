@@ -62,5 +62,5 @@ body {
   border-top: 5px solid black !important
 }
 
-.responsive {width: auto
+.responsive {max-width: 100%
  ;height: auto;}

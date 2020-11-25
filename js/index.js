@@ -125,7 +125,7 @@ var PriceChart = function (_React$Component2) {
     return loading === true ? React.createElement(
       "div",
       null,
-      "loading....."
+      ""
     ) : React.createElement(
       "div",
       {

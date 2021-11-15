@@ -61,7 +61,7 @@ var BitcoinPrice = function (_React$Component) {
           price,
           " Satoshi"
         ),
-        React.createElement("i", { className: "glyphicon glyphicon-xbt icon" })
+        React.createElement("i", { className: "fak fa-satoshisymbol-solidcirtilt" })
       )
     );
   };

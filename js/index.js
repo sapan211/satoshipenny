@@ -59,7 +59,7 @@ var BitcoinPrice = function (_React$Component) {
           "span",
           null,
           price,
-          " Satoshi"
+          " Satoshi "
         ),
         React.createElement("i", { className: "fak fa-satoshisymbol-solidtilt" })
       )
